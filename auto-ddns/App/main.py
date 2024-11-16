@@ -22,6 +22,7 @@ def update_dns_record(ip:str) -> dict:
     Returns:
         dict: The response from the Cloudflare API.
     """
+    print(f"Updating DNS record with IP: {ip}")
     headers = {
         'Authorization': f'Bearer {API_TOKEN}',
         'Content-Type': 'application/json',
@@ -45,13 +46,16 @@ def main():
     
     # Check if the file exists and read the last IP
     if os.path.isfile(ip_file):
+        print("File exists")
         with open(ip_file, 'r') as f:
             last_ip = f.read().strip()
     else:
+        print("File does not exist")
         last_ip = None
 
     # If the IP has changed, update the DNS record
     if current_ip != last_ip:
+        print("IP has changed.")
         # Update the DNS record
         result = update_dns_record(current_ip)
         # Check if the update was successful
