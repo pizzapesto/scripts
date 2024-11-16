@@ -38,6 +38,8 @@ def update_dns_record(ip:str) -> dict:
 
 def main():
     # Obtains the current public IP
+    print("Starting the process...")
+    print (f"My CF Token is: {API_TOKEN}")
     current_ip = get_public_ip()
     ip_file = '/tmp/current_ip.txt'
     
