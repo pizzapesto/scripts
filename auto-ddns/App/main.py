@@ -35,6 +35,7 @@ def update_dns_record(ip:str) -> dict:
         'proxied': False,
     }
     response = requests.put(CF_DNS_URL, headers=headers, json=data)
+    print(response.json())
     return response.json()
 
 def main():
